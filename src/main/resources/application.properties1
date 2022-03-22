@@ -1,0 +1,23 @@
+/* TO DO 
+     create a .env  with enviroment variables;
+     change this file variables
+*/
+
+spring.datasource.url=
+spring.datasource.username= 
+spring.datasource.password=
+
+spring.mvc.pathmatch.matching-strategy = ANT_PATH_MATCHER
+
+
+/* This part  "jpa" connect the models  with the database */
+
+/* only for depuration  */
+spring.jpa.show-sql = true
+
+/* this create a new database and destroy the last one */
+spring.jpa.hibernate.ddl-auto= create
+spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.MySQL8Dialect
+spring.jpa.properties.hibernate.jdbc.time_zone= UTC
+
+
