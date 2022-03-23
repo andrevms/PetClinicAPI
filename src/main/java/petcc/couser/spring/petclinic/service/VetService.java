@@ -2,6 +2,8 @@ package petcc.couser.spring.petclinic.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import petcc.couser.spring.petclinic.model.Appointment;
+import petcc.couser.spring.petclinic.model.Pet;
 import petcc.couser.spring.petclinic.model.Vet;
 import petcc.couser.spring.petclinic.repository.VetRepository;
 
@@ -12,6 +14,9 @@ public class VetService{
 
     @Autowired
     private VetRepository repository;
+
+    @Autowired
+    private AppointmentService appointmentService;
 
     public Optional<Vet> findVetByRegistro(Integer registro){
         return repository.findVetByRegistro(registro);
@@ -39,5 +44,21 @@ public class VetService{
 
     public void deleteVetById(Integer id){
         repository.deleteById(id);
+    }
+
+    public void aceitarConsulta(Integer consultaId, Integer vetId ){
+        Optional<Appointment> consulta = appointmentService.findAppointmentByIdAndVet(consultaId,vetId);
+        if (consulta.isPresent()){
+            consulta.get().setStatus("aceita");
+        }
+        appointmentService.saveAppointment(consulta.get());
+    }
+
+    public void recusarConsulta(Integer consultaId, Integer vetId ){
+        Optional<Appointment> consulta = appointmentService.findAppointmentByIdAndVet(consultaId,vetId);
+        if (consulta.isPresent()){
+            consulta.get().setStatus("recusar");
+        }
+        appointmentService.saveAppointment(consulta.get());
     }
 }

@@ -38,6 +38,18 @@ public class VetController {
         return ResponseEntity.ok(service.findVetByRegistro(registro));
     }
 
+    @PostMapping(value = "/aceitarConsulta/{consultaId}/{vetId}")
+    public ResponseEntity<?> aceitarConsulta(@PathVariable Integer consultaId, Integer vetId){
+        service.aceitarConsulta(consultaId,vetId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/recusarConsulta/{consultaId}/{vetId}")
+    public ResponseEntity<?> recusarConsulta(@PathVariable Integer consultaId, Integer vetId){
+        service.recusarConsulta(consultaId,vetId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<?> saveVet(@RequestBody @Valid Vet vet){
         service.saveVet(vet);

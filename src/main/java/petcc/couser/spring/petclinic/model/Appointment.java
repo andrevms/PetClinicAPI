@@ -9,7 +9,7 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Boolean status;
+    private String status;
 
     private String dia;
 
@@ -18,4 +18,64 @@ public class Appointment {
 
     @ManyToOne
     private Vet vet;
+
+    public Appointment(Integer id, String status, String dia, Pet pets, Vet vet) {
+        this.id = id;
+        this.status = "espera";
+        this.dia = dia;
+        this.pets = pets;
+        this.vet = vet;
+    }
+
+    public Appointment(String status, String dia, Pet pets, Vet vet) {
+        this.status = "espera";
+        this.dia = dia;
+        this.pets = pets;
+        this.vet = vet;
+    }
+
+    public Appointment() {
+        this.status = "espera";
+        this.dia = "teste";
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+
+    public Pet getPets() {
+        return pets;
+    }
+
+    public void setPets(Pet pets) {
+        this.pets = pets;
+    }
+
+    public Vet getVet() {
+        return vet;
+    }
+
+    public void setVet(Vet vet) {
+        this.vet = vet;
+    }
 }

@@ -21,6 +21,25 @@ public class Pet {
     @NotNull
     private Dono dono;
 
+    //Constructor
+
+    public Pet(){
+        this.name = "test";
+        this.aniversario = "aniversario";
+    }
+    public Pet(Integer id, String name, String aniversario, Dono dono) {
+        this.id = id;
+        this.name = name;
+        this.aniversario = aniversario;
+        this.dono = dono;
+    }
+    public Pet(String name, String aniversario, Dono dono) {
+        this.name = name;
+        this.aniversario = aniversario;
+        this.dono = dono;
+    }
+
+
     //Getters & Setters
 
     public Integer getId() {
@@ -47,5 +66,11 @@ public class Pet {
         this.aniversario = aniversario;
     }
 
+    public Dono getDono() {
+        return dono;
+    }
 
+    public void setDono(Dono dono) {
+        this.dono = dono;
+    }
 }

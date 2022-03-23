@@ -26,8 +26,14 @@ public class Person {
         this.email = email;
     }
 
+    public Person(Integer id,String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
     public Person() {
-
+        this.name = "test";
+        this.email = "test@gmail.com";
     }
 
     // Getters & Setters

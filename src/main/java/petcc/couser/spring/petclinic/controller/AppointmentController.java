@@ -1,5 +1,6 @@
 package petcc.couser.spring.petclinic.controller;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,8 @@ public class AppointmentController {
     private AppointmentService service;
 
     @GetMapping
+    @ApiOperation(value = "Endpoint for finding all appointments in system",
+            notes = "Endpoint return all appointments" )
     public ResponseEntity<?> searchAppointment(){
         return ResponseEntity.ok(service.findAllAppointment());
     }
@@ -25,6 +28,12 @@ public class AppointmentController {
     @GetMapping(value = "/buscar/id/{id}")
     public ResponseEntity<?> searchAppointmentById(@PathVariable Integer id){
         return ResponseEntity.ok(service.findAppointmentById(id));
+    }
+
+    @GetMapping(value = "/buscar/appointment/pet/{id}")
+    @ApiOperation(value = "Return all appointments for the Pet id given")
+    public ResponseEntity<?> searchAppointmentByPets(@PathVariable Integer id){
+        return ResponseEntity.ok(service.findAppointmentByPets(id));
     }
 
     @PostMapping
